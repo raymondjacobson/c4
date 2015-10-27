@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    <script src="{{url_for('static', filename='jquery-1.11.3.min.js') }}"></script>
+    <script src="{{url_for('static', filename='main.js') }}"></script>
+  </head>
+  <body>
+    <div id="container">
+      {% block body %}{% endblock %}
+    </div>
+  </body>
+</html>

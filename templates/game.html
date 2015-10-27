@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  {% if player_type != 'spectator' %}
+    <h1>Playing {{game.name}} as {{player.name}} ({{player_type}})</h1>
+  {% else %}
+    <h1>Watching {{game.name}} as {{player.name}}</h1>
+  {% endif %}
+  <h1 id="status">&nbsp;</h1>
+  <div id="game" class="{{player_type}}">
+    <table>
+    <tr>
+      {% for i in range(7) %}
+      <td>
+      {% if not spectator %}
+          <button class="move-button" name="move_location" value="{{i}}">&darr;</button>
+      {% endif %}
+      </td>
+      {% endfor %}
+    </tr>
+    </table>
+    <table class="board">
+    {% for row in game.board %}
+    <tr>
+      {% for entry in row %}
+      <td></td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+  </div>
+  <div id="nav-links">
+  {% if player_type == 'host' %}
+    <form class="delete" action="{{url_for('delete_game', game_id=game._id)}}" method="post">
+      <input type="submit" value="Delete Game"/>
+    </form>
+  {% endif %}
+    <p><a href="{{url_for('index')}}">return home</a></p>
+  </div>
+
+<script>
+  $.get(window.location + "/board", function(data) {
+    updateGame(data);
+  });
+  var updateInterval = setInterval(function() {
+    $.get(window.location + "/board", function(data) {
+      updateGame(data);
+    });
+  }, 200);
+  $('button.move-button').click(function() {
+    var payload = {move_location: $(this).val(), game_id: "{{game._id}}"};
+    // console.log(payload);
+    $.post("{{url_for('move')}}", payload);
+  })
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>Welcome {{player.name}}</h1>
+  <h2>Games</h2>
+  <ul>
+  {% if games|length == 0 %}
+    <p>There are currently no connect four games. Use the form below to start one.</p>
+  {% endif %}
+  {% for game in games %}
+    <li><a href="{{ 'game/'+game._id|string }}"><b>{{ game.name }}</b></a> hosted by {{ game.host_name }} <a class="red" href="{{ 'game/'+game._id|string }}">join</a></li>
+  {% endfor %}
+  </ul>
+  <a href="{{url_for('index')}}">Refresh</a>
+  <h2>New Game</h2>
+  <p>Optionally give your game a name and click "Create Game" to start playing.</p>
+  <form action="{{ url_for('new_game') }}" method="post">
+    <input type="text" name="name" placeholder="Name (optional)">
+    <input type="submit" value="Create Game">
+  </form>
+{% endblock %}

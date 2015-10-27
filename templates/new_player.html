@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>Welcome to C4 4 PG</h1>
+  <p>Please set a user name</p>
+  <form action="{{ url_for('admin') }}" method="post">
+  <input type="text" name="name">
+  <input type="submit" value="Set Name">
+  <input type="hidden" name="destination" value="{{destination}}">
+  </form>
+{% endblock %}

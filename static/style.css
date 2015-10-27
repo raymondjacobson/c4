@@ -1,0 +1,119 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Slabo 27px', serif;
+  font-weight: 200;
+}
+
+#container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px 20px;
+  margin: 2px auto;
+  background: #E7F1FF;
+  width: 60%;
+  text-align: right;
+}
+
+li a {
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+li a b {
+  float: left;
+}
+
+a {
+  color: #333;
+}
+
+input {
+  padding: 10px;
+  color: #aaa;
+  background: none;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+input:hover {
+  border: 1px solid #333;
+  color: #333;
+}
+
+a.red {
+  border: 2px solid #F84845;
+  padding: 0px 5px;
+  color: #F84845;
+  font-weight: bold;
+}
+
+#status {
+  font-size: 20px;
+}
+
+#game {
+  margin: 0 auto;
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+}
+
+table tr {
+  padding: 10px;
+}
+
+button {
+  border: 1px solid #fff;
+  background: #333;
+  color: #fff;
+  box-shadow: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+button:hover {
+  border: 1px solid #333;
+  background: #fff;
+  color: #333;
+}
+
+button:disabled {
+  border: 1px solid #ddd;
+  background: #ddd;
+}
+
+.board td {
+  height: 40px;
+  width: 40px;
+  background: #ddd;
+}
+
+td.blue div {
+  height: 100%;
+  background: #42A5F8;
+  border-radius: 50px;
+  border: 1px solid #42A5F8;
+}
+
+td.red div {
+  height: 100%;
+  background: #F84845;
+  border-radius: 50px;
+  border: 1px solid #F84845;
+}
+
+#nav-links {
+  margin: 20px auto;
+}

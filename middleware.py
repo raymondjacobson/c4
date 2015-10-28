@@ -1,3 +1,7 @@
+# You did not write this code, so please cite where you got it from.
+# This isn't just being a stickler for proper credit, it also
+# helps fellow developers understand the backstory to code and
+# troubleshoot it or extend it better.
 class ReverseProxied(object):
     '''Wrap the application in this middleware and configure the 
     front-end server to add these headers, to let you quietly bind 

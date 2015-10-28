@@ -1,3 +1,4 @@
+# please rename this file "clean_games.py"
 import datetime
 from bson.objectid import ObjectId 
 from pymongo import MongoClient

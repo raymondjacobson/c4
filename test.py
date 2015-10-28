@@ -1,7 +1,12 @@
+# This file is more precisely called "test_board.py".
+# Please move it into a "/tests/models" directory.
+# There are no tests of the rest of the game logic, which lives in "server.py".
+# What are your options for basic testing of the rest of the game logic?
 import unittest
 
-from models import Board, Game, Player
+from models import Board, Game, Player # Game and Player are unused, please remove.
 
+# This class is more precisely called "TestBoard".
 class TestGame(unittest.TestCase):
   def test_horizontal_victory(self):
     b = Board.new()

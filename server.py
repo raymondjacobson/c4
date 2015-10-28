@@ -43,6 +43,20 @@ def delete_game(game_id):
   Game.drop(game_id)
   return redirect(url_for('index'))
 
+# What does "joint_delete" mean? The functionality here is not clear
+# from that name.
+# Note that having a ReSTful endpoint that includes "delete" in
+# its path is actually not ReSTful.
+# Instead you should favor using one of the standard HTTP "verbs",
+# in this case the DELETE verb (aka the DELETE method),
+# and apply that to the appropriate "noun", or named entity in
+# your system. In this case that's a game, so you can just
+# omit the last part of the path, "/joint_delete".
+# While I realize that you have a concept of a "staged" delete
+# going on here, from a single client's perspective they shouldn't
+# really care about that - they just want to delete the game,
+# and as far as they're concerned, they've done so once the response
+# comes back.
 @app.route('/game/<game_id>/joint_delete', methods=['POST'])
 def joint_delete_game(game_id):
   Game.staged_drop(game_id)
@@ -50,6 +64,9 @@ def joint_delete_game(game_id):
 
 @app.route("/game/<game_id>", methods=['GET'])
 def view_game(game_id):
+  # What's worth testing here?
+  # Whatever that is, how would you test it?
+  # See note on "move()" function below.
   if '_id' in session.keys() and Player.load(session['_id']):
     player = Player.load(session['_id'])
     game = Game.get(game_id)
@@ -97,8 +114,16 @@ def load_board(game_id):
                  host_name=host_name,
                  challenger_name=challenger_name)
 
+# How would you test move()?
+# Note: Factoring out the "meat" of this function into a separate
+# module could be helpful.
+# Having the meat live directly in the route function (the handler
+# for HTTP requests) is convenient to code but less convenient to test.
 @app.route("/move", methods=['POST'])
 def move():
+  # Please see the comments in "models.py" about factoring out small
+  # self-describing functions to aid in organization and readability,
+  # and apply the same idea to this "move()" function.
   p = Player.load(session['_id'])
   game_id = request.form['game_id']
   move_location = request.form['move_location']

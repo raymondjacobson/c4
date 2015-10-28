@@ -20,7 +20,6 @@ A first visit requires a user to set a user name. Once a name is set, a user is 
 - Win detection and automatic game deletion
 - Share a game by simply copying its link
 - Users spectate a game by joining 3rd
-- Pingdom uptime chart on home page
 
 ##Stack
 - jQuery

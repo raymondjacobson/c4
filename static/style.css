@@ -36,7 +36,7 @@ a {
   color: #333;
 }
 
-input {
+input{
   padding: 10px;
   color: #aaa;
   background: none;
@@ -74,6 +74,14 @@ table tr {
 }
 
 button {
+  padding: 10px;
+  color: #aaa;
+  background: none;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+button.move-button {
   border: 1px solid #fff;
   background: #333;
   color: #fff;

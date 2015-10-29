@@ -36,6 +36,12 @@ pip install -r requirements.txt
 python server.py
 ```
 
+##Testing
+```shell
+nosetests <path>
+nosetests tests/test_board.py
+```
+
 ##TODO
 - Scoring sytem and player history
 - Match making

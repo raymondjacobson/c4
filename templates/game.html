@@ -31,26 +31,39 @@
   </div>
   <div id="nav-links">
   {% if player_type == 'host' %}
-    <form class="delete" action="{{url_for('delete_game', game_id=game._id)}}" method="post">
-      <input type="submit" value="Delete Game"/>
-    </form>
+    <button href="{{url_for('index')}}" id="delete">Delete Game</button>
   {% endif %}
     <p><a href="{{url_for('index')}}">return home</a></p>
   </div>
 
 <script>
+
+$('button.move-button').click(function() {
+  var payload = {move_location: $(this).val(), game_id: "{{game._id}}"};
+  $.post("{{url_for('move')}}", payload);
+});
+
+$('button#delete').click(function() {
+  $.ajax({
+      url: window.location,
+      type: 'DELETE',
+      success: function(data) {
+        window.location = $('button#delete').attr('href');  
+      }
+    });
+});
+
+// Request an update of the game board every update_board_frequency ms
+update_board_frequency = 200;
+$.get(window.location + "/board", function(data) {
+  updateGame(data);
+});
+
+var updateInterval = setInterval(function() {
   $.get(window.location + "/board", function(data) {
     updateGame(data);
   });
-  var updateInterval = setInterval(function() {
-    $.get(window.location + "/board", function(data) {
-      updateGame(data);
-    });
-  }, 200);
-  $('button.move-button').click(function() {
-    var payload = {move_location: $(this).val(), game_id: "{{game._id}}"};
-    // console.log(payload);
-    $.post("{{url_for('move')}}", payload);
-  })
+}, update_board_frequency);
+
 </script>
 {% endblock %}

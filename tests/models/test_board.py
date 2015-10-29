@@ -3,7 +3,7 @@ import unittest
 from models import Board
 
 
-class TestGame(unittest.TestCase):
+class TestBoard(unittest.TestCase):
     def test_horizontal_victory(self):
         b = Board.new()
         b[len(b) - 1][0] = 1
